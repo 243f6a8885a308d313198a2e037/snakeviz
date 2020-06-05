@@ -50,15 +50,15 @@
                  }
                  return data;
              }},
-            {'title': 'File Size',
+            {'title': 'File Size [KiB]',
              'render': function(data, type, row, meta){
                  if (type === "display") {
                    if (data.file_size === null) return '(dir)'
-                   return data.file_size
+                   return Math.floor(data.file_size / 1024);
                  }
                  return data;
              }},
-            {'title': 'Execution Time',
+            {'title': 'Execution Time [sec]',
              'render': function(data, type, row, meta){
                  if (type === "display") {
                    if (data.execution_time === null) return '-'
