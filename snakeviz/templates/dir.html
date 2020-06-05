@@ -48,7 +48,7 @@
                  if (type === "display") {
                    return '<a href="' + data.href + '">' + data.path + '</a>';
                  }
-                 return data;
+                 return data.path;
              }},
             {'title': 'File Size [KiB]',
              'render': function(data, type, row, meta){
@@ -56,7 +56,7 @@
                    if (data.file_size === null) return '(dir)'
                    return Math.floor(data.file_size / 1024);
                  }
-                 return data;
+                 return data.file_size;
              }},
             {'title': 'Execution Time [sec]',
              'render': function(data, type, row, meta){
@@ -64,7 +64,7 @@
                    if (data.execution_time === null) return '-'
                    return Number.parseFloat(data.execution_time).toFixed(2);
                  }
-                 return data;
+                 return data.execution_time;
              }},
             {'title': 'Total Calls',
              'render': function(data, type, row, meta){
@@ -72,7 +72,7 @@
                    if (data.total_calls === null) return '-'
                    return data.total_calls;
                  }
-                 return data;
+                 return data.total_calls;
              }}
           ],
           'order': [0, 'asc'],
