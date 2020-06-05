@@ -43,10 +43,34 @@
         $('#pstats-table').dataTable({
           'data': dir_entries,
           'columns': [
-            {'title': 'filename',
+            {'title': 'Filename',
              'render': function(data, type, row, meta){
-                 if(type === "display") {
-                    data = '<a href="' + data[1] + '">' + data[0] + '</a>';
+                 if (type === "display") {
+                   return '<a href="' + data.href + '">' + data.path + '</a>';
+                 }
+                 return data;
+             }},
+            {'title': 'File Size',
+             'render': function(data, type, row, meta){
+                 if (type === "display") {
+                   if (data.file_size === null) return '(dir)'
+                   return data.file_size
+                 }
+                 return data;
+             }},
+            {'title': 'Execution Time',
+             'render': function(data, type, row, meta){
+                 if (type === "display") {
+                   if (data.execution_time === null) return '-'
+                   return Number.parseFloat(data.execution_time).toFixed(2);
+                 }
+                 return data;
+             }},
+            {'title': 'Total Calls',
+             'render': function(data, type, row, meta){
+                 if (type === "display") {
+                   if (data.total_calls === null) return '-'
+                   return data.total_calls;
                  }
                  return data;
              }}
